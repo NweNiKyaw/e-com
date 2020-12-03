@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Sections</h1>
+            <h1>Catalogues</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -46,9 +46,11 @@
                             <td>{{ $section->name }}</td>
                             <td>
                                 @if($section->status==1)
-                                    Active
+                                    <a class="updateSectionStatus" id="section-{{ $section->id }}" 
+                                      section_id="{{ $section->id }}" href="javascript:void(0)">Active</a>
                                 @else
-                                    Inactive
+                                    <a class="updateSectionStatus" id="section-{{ $section->id }}"
+                                      section_id="{{ $section->id }}" href="javascript:void(0)">Inactive</a>
                                 @endif
                             </td>
                         </tr>
