@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Section;
 use function GuzzleHttp\json_decode;
 use Session;
 
@@ -32,5 +33,21 @@ class CategoryController extends Controller
             Category::where('id',$data['category_id'])->update(['status'=>$status]);
             return response()->json(['status'=>$status,'category_id'=>$data['category_id']]);
         }
+    }
+
+    public function addEditCategory(Request $request, $id=null)
+    {
+        if($id=""){
+            $title = "Add Category";
+            // Add Category Functionality
+        } else {
+            $title = "Edit Category";
+            // Edit Category Functionality
+        }
+
+        // Get All Sections
+        $getSections = Section::get();
+
+        return view('admin.categories.add_edit_category')->with(compact('title','getSections'));
     }
 }
