@@ -22,6 +22,15 @@
 
     <section class="content">
       <div class="container-fluid">
+        @if($errors->any())
+          <div class="alert alert-danger" style="margin-top: 10px">
+            <ul>
+              @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
         <form name="categoryForm" id="CategoryForm" action="{{ url('admin/add-edit-category') }}"
         method="post" enctype="multipart/form-data">
         @csrf
